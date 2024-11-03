@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>File Upload</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-full w-full mx-8"
+    >
+      <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">
+        Least Squares Regression Using SVD and the Moore–Penrose Pseudoinverse
+      </h1>
+
+      <!-- Flash Message Div -->
+      <div
+        id="flash-message"
+        class="hidden mb-4 text-center p-4 rounded text-white"
+      ></div>
+
+      <form>
+        <label class="block mb-2 font-medium"
+          >Choose File (.xlsx, .csv, .sav, .datatab):</label
+        >
+        <input
+          type="file"
+          id="fileInput"
+          name="file"
+          onchange="uploadFile()"
+          accept=".xlsx,.csv,.sav,.datatab"
+          required
+          class="block w-full text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-indigo-100 file:text-indigo-700 hover:file:bg-indigo-200"
+        />
+      </form>
+
+      <div class="bg-white rounded hidden" id="feature-selection">
+        <h2 class="text-2xl font-bold my-4">Select Features</h2>
+        <div class="flex justify-between items-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-1/4">
+            <div>
+              <h3 class="font-medium mb-2">Select Dependent Feature:</h3>
+              <div id="dependent-features" class="mb-4"></div>
+            </div>
+
+            <div>
+              <h3 class="font-medium mb-2">Select Independent Features:</h3>
+              <div id="independent-features" class="mb-4"></div>
+            </div>
+          </div>
+          <img
+            id="plot-image"
+            class="hidden"
+            alt="Regression Plot"
+            style="width: 60%;margin-top: -6rem;"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+  </body>
+</html>
